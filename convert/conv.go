@@ -25,6 +25,11 @@ func ToValue(v interface{}) (skylark.Value, error) {
 	if val, ok := v.(skylark.Value); ok {
 		return val, nil
 	}
+
+	if v == nil {
+		return skylark.None, nil
+	}
+
 	switch v := v.(type) {
 	case int:
 		return skylark.MakeInt(v), nil
