@@ -64,6 +64,8 @@ func ToValue(v interface{}) (skylark.Value, error) {
 	case map[interface{}]bool:
 		// Set
 		return MakeSet(v)
+	case nil:
+		return skylark.None, nil
 	}
 
 	return nil, fmt.Errorf("type %T is not a supported skylark type", v)
